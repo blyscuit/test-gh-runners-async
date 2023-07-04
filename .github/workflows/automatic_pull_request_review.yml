@@ -43,9 +43,8 @@ jobs:
 
     - name: Build and Test
       run: |
-        [[ ${{ runner.name }} =~ _([0-9]+)_ ]]
-        echo ${BASH_REMATCH[1]}      
-        bundle exec fastlane buildAndTest --swift_server_port ${BASH_REMATCH[1]}     
+        echo [[ ${{ runner.name }} =~ _([0-9]+)_ ]]
+        bundle exec fastlane buildAndTest --swift_server_port [[ ${{ runner.name }} =~ _([0-9]+)_ ]]
       env:
         CI: true
 
