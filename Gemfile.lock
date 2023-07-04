@@ -335,6 +335,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-22
+  x86_64-darwin-21
 
 DEPENDENCIES
   cocoapods
@@ -348,4 +349,4 @@ DEPENDENCIES
   xcov
 
 BUNDLED WITH
-   2.4.15
+   2.4.13
