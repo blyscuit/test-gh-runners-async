@@ -43,8 +43,11 @@ jobs:
 
     - name: Build and Test
       run: |
-        echo [[ ${{ runner.name }} =~ _([0-9]+)_ ]]
-        bundle exec fastlane buildAndTest --swift_server_port [[ ${{ runner.name }} =~ _([0-9]+)_ ]]
+        if [[ ${{ runner.name }} =~ .*1.* ]]; then
+        bundle exec fastlane buildAndTest --swift_server_port 2000
+        else
+        bundle exec fastlane buildAndTest --swift_server_port 2001
+        fi
       env:
         CI: true
 
