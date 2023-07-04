@@ -1,0 +1,12 @@
+sources:
+  - iOSTemplate/Sources
+templates:
+  - tools/sourcery/templates
+output:
+  iOSTemplateTests/Sources/Mocks/Sourcery 
+args:
+  autoMockableTestableImports:
+    - iOSTemplate
+  autoMockableImports:
+    - RxSwift
+    - RxCocoa
