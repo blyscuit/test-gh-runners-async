@@ -8,6 +8,7 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
+
 jobs:
   review_pull_request:
     name: Pull request review by Danger
@@ -17,6 +18,11 @@ jobs:
       with:
         fetch-depth: 0
 
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.0' # Not needed with a .ruby-version file
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+        
     - uses: actions/cache@v3
       id: bunlderCache
       with:
@@ -41,7 +47,8 @@ jobs:
       run: bundle exec pod install
 
     - name: Build and Test
-      run: bundle exec fastlane buildAndTest
+      run: |
+        bundle exec fastlane buildAndTest --swift_server_port 2007
       env:
         CI: true
 
